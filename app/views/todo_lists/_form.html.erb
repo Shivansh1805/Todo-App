@@ -1,0 +1,47 @@
+<%= form_with(model: todo_list) do |form| %>
+  <% if todo_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+
+      <ul>
+        <% todo_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+    <%= form.label :title %>
+    </div>
+    <div class="col-sm-8">
+        <%= form.text_field :title , class:"form-control",placeholder:"Title ", autofocus: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :email %>
+    </div>
+    <div class="col-sm-8">
+        <%= form.email_field :email , rows: 10 ,class: "form-control", placeholder: "Email" %>
+        <div mt-5>
+        <%= form.label :reminder %><br />
+        <%= form.check_box :reminder %>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+          <%= form.submit class:"btn btn-primary btn-lg"%>
+      </div>
+  </div>
+
+<% end %>
+
+
